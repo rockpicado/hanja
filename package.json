@@ -1,0 +1,64 @@
+{
+  "name": "hanja",
+  "version": "0.1.0",
+  "description": "Hanja-Hangul Converter for Korean Language Processing",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "test": "jest --config jestconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags",
+    "check-updates": "npx npm-check-updates",
+    "check-updates:minor": "npx npm-check-updates --target minor",
+    "check-updates:patch": "npx npm-check-updates --target patch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockpicado/hanja.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+    "typescript",
+    "npm",
+    "template",
+    "ts"
+  ],
+  "author": "Rock Picado",
+  "license": "MIT",
+  "funding": [
+    {
+      "type": "Paypal",
+      "url": "https://www.paypal.me/rockpicado"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/rockpicado/hanja/issues"
+  },
+  "homepage": "https://github.com/rockpicado/hanja#readme",
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "ansi-regex": ">=6.0.1",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.4.1",
+    "ts-jest": "^29.0.5",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "yaml": "^2.3.4"
+  }
+}
