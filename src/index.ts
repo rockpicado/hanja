@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { parse } from 'yaml';
-const file = readFileSync(join(__dirname, 'table.yml'), 'utf8');
+const file = readFileSync(join(__dirname, '../table.yml'), 'utf8');
 const hanjaTable = parse(file);
 
 enum TRANSLATE_TYPES {
