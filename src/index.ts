@@ -1,8 +1,4 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { parse } from 'yaml';
-const file = readFileSync(join(__dirname, '../table.yml'), 'utf8');
-const hanjaTable = parse(file);
+import * as hanjaTable from './table.json';
 
 enum TRANSLATE_TYPES {
   SUBSTITUTION = 'SUBSTITUTION',
@@ -66,16 +62,16 @@ function dueum(char: string, context: string): string {
   return char;
 }
 
-function translate(text: string, mode: TRANSLATE_TYPES, customFn?: (hanja: string, hangul: string) => {}): string {
+function translate(text: string, mode: TRANSLATE_TYPES, customFn?: (hanja: string, hangul: string) => string): string {
   if (mode === TRANSLATE_TYPES.SUBSTITUTION) {
     let result = "";
     for (const char of text) {
-      if (char in hanjaTable) result += dueum(hanjaTable[char], result);
+      if (char in hanjaTable) result += dueum(hanjaTable[char as keyof typeof hanjaTable], result);
       else result += char;
     }
     return result;
   } else if (mode === TRANSLATE_TYPES.CUSTOM) {
-    const fn = customFn || function (hanja) { return hanja }
+    const fn = customFn || function (hanja) { return hanja; };
 
     let result = "";
     const segments = split(text);
@@ -88,9 +84,9 @@ function translate(text: string, mode: TRANSLATE_TYPES, customFn?: (hanja: strin
     }
     return result;
   } else if (mode === TRANSLATE_TYPES.PARENTHESIS_HANGUL) {
-    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hanja}(${hangul})`)
+    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hanja}(${hangul})`);
   } else if (mode === TRANSLATE_TYPES.PARENTHESIS_HANJA) {
-    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hangul}(${hanja})`)
+    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hangul}(${hanja})`);
   }
 
   return text;
