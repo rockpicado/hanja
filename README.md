@@ -27,12 +27,16 @@ hanja.translate('大韓民國은 民主共和國이다.', hanja.TRANSLATE_TYPES.
 ```typescript
 hanja.translate('大韓民國은 民主共和國이다.', hanja.TRANSLATE_TYPES.PARENTHESIS_HANJA)
 // => '대한민국(大韓民國)은 민주공화국(民主共和國)이다.'
-'
 ```
 
 한자(한글) 모드 변환:
 ```typescript
 hanja.translate('大韓民國은 民主共和國이다.', hanja.TRANSLATE_TYPES.PARENTHESIS_HANGUL)
 // => '大韓民國(대한민국)은 民主共和國(민주공화국)이다.'
+```
 
+커스텀 모드 변환:
+```typescript
+hanja.translate('大韓民國은 民主共和國이다.', hanja.TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `<ruby>${hanja}<rt>${hangul}</rt></ruby>`)
+// => '大韓民國(대한민국)은 民主共和國(민주공화국)이다.'
 ```

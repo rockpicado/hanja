@@ -29,3 +29,9 @@ test("translate parenthesis hanja mode", () => {
       hanja.translate("大韓民國은 民主共和國이다.", hanja.TRANSLATE_TYPES.PARENTHESIS_HANGUL)
   ).toBe("大韓民國(대한민국)은 民主共和國(민주공화국)이다.");
 });
+
+test("translate parenthesis custom mode", () => {
+  expect(
+      hanja.translate("大韓民國은 民主共和國이다.", hanja.TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `<ruby>${hanja}<rt>${hangul}</rt></ruby>`)
+  ).toBe("<ruby>大韓民國<rt>대한민국</rt></ruby>은 <ruby>民主共和國<rt>민주공화국</rt></ruby>이다.");
+});

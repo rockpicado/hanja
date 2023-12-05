@@ -5,7 +5,10 @@ const file = readFileSync(join(__dirname, '../table.yml'), 'utf8');
 const hanjaTable = parse(file);
 
 enum TRANSLATE_TYPES {
-  SUBSTITUTION = 'SUBSTITUTION', PARENTHESIS_HANGUL = 'PARENTHESIS_HANGUL', PARENTHESIS_HANJA = 'PARENTHESIS_HANJA'
+  SUBSTITUTION = 'SUBSTITUTION',
+  PARENTHESIS_HANGUL = 'PARENTHESIS_HANGUL',
+  PARENTHESIS_HANJA = 'PARENTHESIS_HANJA',
+  CUSTOM = 'CUSTOM',
 }
 
 function isHanja(char: string): boolean {
@@ -63,7 +66,7 @@ function dueum(char: string, context: string): string {
   return char;
 }
 
-function translate(text: string, mode: TRANSLATE_TYPES): string {
+function translate(text: string, mode: TRANSLATE_TYPES, customFn?: (hanja: string, hangul: string) => {}): string {
   if (mode === TRANSLATE_TYPES.SUBSTITUTION) {
     let result = "";
     for (const char of text) {
@@ -71,29 +74,23 @@ function translate(text: string, mode: TRANSLATE_TYPES): string {
       else result += char;
     }
     return result;
+  } else if (mode === TRANSLATE_TYPES.CUSTOM) {
+    const fn = customFn || function (hanja) { return hanja }
+
+    let result = "";
+    const segments = split(text);
+    for (const segment of segments) {
+      if (!isHanja(segment[0])) {
+        result += segment;
+      } else {
+        result += fn(segment, translate(segment, TRANSLATE_TYPES.SUBSTITUTION));
+      }
+    }
+    return result;
   } else if (mode === TRANSLATE_TYPES.PARENTHESIS_HANGUL) {
-    let result = "";
-    const segments = split(text);
-    for (const segment of segments) {
-      if (!isHanja(segment[0])) {
-        result += segment;
-      } else {
-        result += `${segment}(${translate(segment, TRANSLATE_TYPES.SUBSTITUTION)})`;
-      }
-    }
-    return result;
-    
+    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hanja}(${hangul})`)
   } else if (mode === TRANSLATE_TYPES.PARENTHESIS_HANJA) {
-    let result = "";
-    const segments = split(text);
-    for (const segment of segments) {
-      if (!isHanja(segment[0])) {
-        result += segment;
-      } else {
-        result += `${translate(segment, TRANSLATE_TYPES.SUBSTITUTION)}(${segment})`;
-      }
-    }
-    return result;
+    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hangul}(${hanja})`)
   }
 
   return text;
