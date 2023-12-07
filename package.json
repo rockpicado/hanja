@@ -1,6 +1,6 @@
 {
   "name": "hanja",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hanja-Hangul Converter for Korean Language Processing",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -27,9 +27,14 @@
   ],
   "keywords": [
     "typescript",
-    "npm",
-    "template",
-    "ts"
+    "ts",
+    "han",
+    "hanja",
+    "hanzi",
+    "kanji",
+    "conv",
+    "korean",
+    "character"
   ],
   "author": "Rock Picado",
   "license": "MIT",
