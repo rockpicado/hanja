@@ -13,7 +13,8 @@ npm install hanja
 ## Usage
 ### 필요한 모듈 Import 하기
 ```typescript
-import hanja
+import hanja from 'hanja'
+// or const { default: hanja } = require('hanja')
 ```
 
 ### 문장 변환
