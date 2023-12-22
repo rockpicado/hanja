@@ -1,6 +1,6 @@
 {
   "name": "hanja",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Hanja-Hangul Converter for Korean Language Processing",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

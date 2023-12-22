@@ -4,7 +4,6 @@ enum TRANSLATE_TYPES {
   SUBSTITUTION = 'SUBSTITUTION',
   PARENTHESIS_HANGUL = 'PARENTHESIS_HANGUL',
   PARENTHESIS_HANJA = 'PARENTHESIS_HANJA',
-  CUSTOM = 'CUSTOM',
 }
 
 function isHanja(char: string): boolean {
@@ -29,7 +28,6 @@ function split(text: string): string[] {
   if (segment !== null) result.push(segment);
 
   return result;
-  // return [text]
 }
 
 function dueum(char: string, context: string): string {
@@ -62,7 +60,7 @@ function dueum(char: string, context: string): string {
   return char;
 }
 
-function translate(text: string, mode: TRANSLATE_TYPES, customFn?: (hanja: string, hangul: string) => string): string {
+function translate(text: string, mode: TRANSLATE_TYPES | ((hanja: string, hangul: string) => string)): string {
   if (mode === TRANSLATE_TYPES.SUBSTITUTION) {
     let result = "";
     for (const char of text) {
@@ -70,8 +68,8 @@ function translate(text: string, mode: TRANSLATE_TYPES, customFn?: (hanja: strin
       else result += char;
     }
     return result;
-  } else if (mode === TRANSLATE_TYPES.CUSTOM) {
-    const fn = customFn || function (hanja) { return hanja; };
+  } else if (typeof mode === 'function') {
+    const fn = mode || function (hanja) { return hanja; };
 
     let result = "";
     const segments = split(text);
@@ -84,9 +82,9 @@ function translate(text: string, mode: TRANSLATE_TYPES, customFn?: (hanja: strin
     }
     return result;
   } else if (mode === TRANSLATE_TYPES.PARENTHESIS_HANGUL) {
-    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hanja}(${hangul})`);
+    return translate(text, (hanja, hangul) => `${hanja}(${hangul})`);
   } else if (mode === TRANSLATE_TYPES.PARENTHESIS_HANJA) {
-    return translate(text, TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `${hangul}(${hanja})`);
+    return translate(text, (hanja, hangul) => `${hangul}(${hanja})`);
   }
 
   return text;

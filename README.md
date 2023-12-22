@@ -38,6 +38,6 @@ hanja.translate('大韓民國은 民主共和國이다.', hanja.TRANSLATE_TYPES.
 
 커스텀 모드 변환:
 ```typescript
-hanja.translate('大韓民國은 民主共和國이다.', hanja.TRANSLATE_TYPES.CUSTOM, (hanja, hangul) => `<ruby>${hanja}<rt>${hangul}</rt></ruby>`)
+hanja.translate('大韓民國은 民主共和國이다.', (hanja, hangul) => `<ruby>${hanja}<rt>${hangul}</rt></ruby>`)
 // => '<ruby>大韓民國<rt>대한민국</rt></ruby>은 <ruby>民主共和國<rt>민주공화국</rt></ruby>이다.'
 ```
