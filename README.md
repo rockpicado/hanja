@@ -1,4 +1,4 @@
-# hanja: 한자 유틸리티 for Typescript
+# hanja: Sino-Korean, aka Hanja, Utilities for Typescript
 
 * 한자-한글 변환 (두음법칙 포함)
 * 한자 구성 필획
