@@ -43,7 +43,6 @@ hanja.translate('大韓民國은 民主共和國이다.', (hanja, hangul) => `<r
 ```
 > <ruby>大韓民國<rt>대한민국</rt></ruby>은 <ruby>民主共和國<rt>민주공화국</rt></ruby>이다.
 
-**참고:** [함수선언](lib/translate.d.ts)을 참고하세요
 
 ### 구성 필획
 치환 모드 변환:
@@ -71,9 +70,6 @@ hanja.getStrokes('合', 'MLJKN')
 hanja.getStrokes('合', 'hspnz')
 // => pnhszh
 ```
-**참고:** [함수선언](lib/strokes.d.ts)을 참고하세요
-
-
 
 ## 데이터
 한자-한글 데이터: suminb님이 관리하시는 [Python Library](https://github.com/suminb/hanja)
