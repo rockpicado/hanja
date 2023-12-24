@@ -7,7 +7,7 @@ test('split hanja', () => {
   expect(corpora[1]).toBe('은 ');
   expect(corpora[2]).toBe('民主共和國');
   expect(corpora[3]).toBe('이다.');
-})
+});
 
 test('translate substitution mode', () => {
   expect(hanja.translate("韓國語", "SUBSTITUTION")).toBe("한국어");
@@ -18,7 +18,7 @@ test('translate substitution mode', () => {
   expect(hanja.translate("그레고리曆", "SUBSTITUTION")).toBe("그레고리력");
   expect(hanja.translate("系列", "SUBSTITUTION")).toBe("계열");
 
-})
+});
 
 test("translate parenthesis hanja mode", () => {
   expect(hanja.translate('韓國語', "PARENTHESIS_HANGUL")).toBe('韓國語(한국어)');
@@ -28,10 +28,10 @@ test("translate parenthesis hanja mode", () => {
   expect(
       hanja.translate("大韓民國은 民主共和國이다.", "PARENTHESIS_HANGUL")
   ).toBe("大韓民國(대한민국)은 民主共和國(민주공화국)이다.");
-})
+});
 
 test("translate parenthesis custom mode", () => {
   expect(
       hanja.translate("大韓民國은 民主共和國이다.", (hanja, hangul) => `<ruby>${hanja}<rt>${hangul}</rt></ruby>`)
   ).toBe("<ruby>大韓民國<rt>대한민국</rt></ruby>은 <ruby>民主共和國<rt>민주공화국</rt></ruby>이다.");
-})
+});

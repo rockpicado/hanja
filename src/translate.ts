@@ -85,6 +85,6 @@ function translate(text: string, mode: TRANSLATE_TYPES | ((hanja: string, hangul
   }
 
   return text;
-};
+}
 
 export { translate, split };
