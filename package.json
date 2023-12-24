@@ -1,7 +1,7 @@
 {
   "name": "hanja",
-  "version": "1.1.0",
-  "description": "Hanja-Hangul Converter for Korean Language Processing",
+  "version": "1.1.1",
+  "description": "Sino-Korean, aka Hanja, Utilities for Korean Language Processing",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -22,8 +22,7 @@
     "url": "git+https://github.com/rockpicado/hanja.git"
   },
   "files": [
-    "lib/**/*",
-    "table.yml"
+    "lib/**/*"
   ],
   "keywords": [
     "typescript",
