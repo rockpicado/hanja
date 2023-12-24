@@ -1,5 +1,5 @@
 
-import * as hanjaTable from '../data/hanjaeum.json';
+import * as hanjaTable from './data/hanjaeum.json';
 
 type TRANSLATE_TYPES = 'SUBSTITUTION' | 'PARENTHESIS_HANGUL' | 'PARENTHESIS_HANJA'
 

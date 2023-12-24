@@ -1,5 +1,5 @@
 
-import * as hanjaTable from '../data/hoek.json';
+import * as hanjaTable from './data/hoek.json';
 
 type StrokesFormat = '12345' // default
   | '一丨丿丶乚' // https://www.cns11643.gov.tw/wordView.jsp?ID=92487
