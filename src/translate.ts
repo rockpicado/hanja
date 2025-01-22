@@ -36,7 +36,6 @@ function dueum(char: string, context: string): string {
     if (prevChars === undefined || prevChars[2] === undefined || prevChars[2] === '안'.normalize('NFKD')[2]) {
       return ('ㅇ' + chars.slice(1)).normalize('NFKC');
     }
-    return char;
   }
 
   if (context !== '') return char;

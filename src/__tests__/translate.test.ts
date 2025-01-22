@@ -19,6 +19,7 @@ test('translate substitution mode', () => {
   expect(hanja.translate("系列", "SUBSTITUTION")).toBe("계열");
   expect(hanja.translate("分裂", "SUBSTITUTION")).toBe("분열");
   expect(hanja.translate("烈士", "SUBSTITUTION")).toBe("열사");
+  expect(hanja.translate("行列", "SUBSTITUTION")).toBe("행렬");
 });
 
 test("translate parenthesis hanja mode", () => {
