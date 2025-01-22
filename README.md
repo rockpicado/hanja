@@ -20,7 +20,7 @@ import hanja from 'hanja'
 ### 문장 변환
 치환 모드 변환:
 ```typescript
-hanja.translate('大韓民國은 民主共和國이다.', 'SUBSTITUTE')
+hanja.translate('大韓民國은 民主共和國이다.', 'SUBSTITUTION')
 // => '대한민국은 민주공화국이다.'
 ```
 
