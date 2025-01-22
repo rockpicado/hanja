@@ -17,7 +17,7 @@ test('translate substitution mode', () => {
   expect(hanja.translate("1800年에", "SUBSTITUTION")).toBe("1800년에");
   expect(hanja.translate("그레고리曆", "SUBSTITUTION")).toBe("그레고리력");
   expect(hanja.translate("系列", "SUBSTITUTION")).toBe("계열");
-  expect(hanja.translate("分列", "SUBSTITUTION")).toBe("분열");
+  expect(hanja.translate("分裂", "SUBSTITUTION")).toBe("분열");
   expect(hanja.translate("烈士", "SUBSTITUTION")).toBe("열사");
 });
 
