@@ -32,10 +32,11 @@ function dueum(char: string, context: string): string {
 
   // 모음이나 ㄴ 받침 뒤에 이어지는 '렬, 률'은 '열, 율'로 발음한다.
   if ('렬률'.includes(char)) {
-    const prevChars = context[context.length - 1].normalize('NFKD');
-    if (prevChars[2] === undefined || prevChars[2] === '알'.normalize('NFKD')[2]) {
+    const prevChars = context[context.length - 1]?.normalize('NFKD');
+    if (prevChars === undefined || prevChars[2] === undefined || prevChars[2] === '안'.normalize('NFKD')[2]) {
       return ('ㅇ' + chars.slice(1)).normalize('NFKC');
     }
+    return char;
   }
 
   if (context !== '') return char;
