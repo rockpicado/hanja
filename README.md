@@ -1,6 +1,7 @@
 # Hanja: Sino-Korean Utilities for TypeScript
 
-![NPM Downloads](https://img.shields.io/npm/d18m/hanja)
+![npm](https://img.shields.io/npm/v/hanja.svg) ![NPM Downloads](https://img.shields.io/npm/d18m/hanja)
+
 
 한자와 한글 변환 및 한자 필획 정보를 제공하는 TypeScript 라이브러리입니다.
 
