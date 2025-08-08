@@ -14,6 +14,8 @@ test('get strokes', () => {
   expect(hanja.getStrokes('韓', '一丨丿丶乙')).toBe('一丨丨乙一一一丨乙丨一丨乙一一乙丨');
   expect(hanja.getStrokes('民', '一丨丿丶乙')).toBe('乙一乙一乙');
   expect(hanja.getStrokes('國', '一丨丿丶乙')).toBe('丨乙一丨乙一一乙丶丿一');
+
+  expect(hanja.getStrokes('숲', '一丨丿丶乙')).toBeUndefined();
 });
 
 test('stroke format', () => {

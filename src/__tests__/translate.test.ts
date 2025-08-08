@@ -20,9 +20,12 @@ test('translate substitution mode', () => {
   expect(hanja.translate("分裂", "SUBSTITUTION")).toBe("분열");
   expect(hanja.translate("烈士", "SUBSTITUTION")).toBe("열사");
   expect(hanja.translate("行列", "SUBSTITUTION")).toBe("행렬");
+  expect(hanja.translate("尿素", "SUBSTITUTION")).toBe("요소");
+  expect(hanja.translate("來日", "SUBSTITUTION")).toBe("내일");
 });
 
-test("translate parenthesis hanja mode", () => {
+test("translate parenthesis hanja and hangul mode", () => {
+  expect(hanja.translate('韓國語', "PARENTHESIS_HANJA")).toBe('한국어(韓國語)');
   expect(hanja.translate('韓國語', "PARENTHESIS_HANGUL")).toBe('韓國語(한국어)');
 
   expect(hanja.translate("韓國語", "PARENTHESIS_HANGUL")).toBe("韓國語(한국어)");
